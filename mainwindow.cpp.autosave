@@ -25,22 +25,22 @@ MainWindow::~MainWindow()
 void MainWindow::slotReadyRead()
 {
     QDataStream in(socket);
-    //���� ��������� ����� ���� ������ 2 ����� ��� ��� ������
+    //
     if (nextBlockSize == 0) {
-        //���� ������ ������ 2 ���� ���� ���� ����� 2 �����
+        //
         if (socket->bytesAvailable() < (int)sizeof(quint16))
             return;
-        //��������� ������ (2 �����)
+        //
         in >> nextBlockSize;
         qDebug() << "nextBlockSize now " << nextBlockSize;
     }
-    //���� ���� ���� ������� ���������
+    //
     if (socket->bytesAvailable() < nextBlockSize)
         return;
     else
-        //����� ��������� ����� ����
+        //
         nextBlockSize = 0;
-    //3 ���� - ������� �������
+    //
     quint8 command;
     in >> command;
     qDebug() << "Received command " << command;

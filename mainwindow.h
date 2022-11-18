@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QTcpSocket>
 #include <QTime>
+#include <QMessageBox>
+
+#include "/home/y/gcc_progrs/klient-server/server/myclient.h"
+class MyClient;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,23 +19,31 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
 private slots:
-    void on_pushButton_connect_clicked();
+     void slotReadyRead();
+     void slotRegistrationW();
+     void slotSokConnected();
+     void slotSokDisconnected();
+     void slotSokDisplayError(QAbstractSocket::SocketError socketError);
 
-    void on_pushButton_send_clicked();
+     void on_pbConnect_clicked();
+     void on_pbDisconnect_clicked();
+     void on_cbToAll_clicked();
+     void on_pbSend_clicked();
 
-    void on_lineEdit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
     QTcpSocket *socket;
-    QByteArray Data;
-    void SendToServer(QString str);
+    QString _name;
+//    QByteArray Data;
     quint16 nextBlockSize;
 
-public slots:
-    void slotReadyRead();
+    void AddToLog(QString text, QColor color = Qt::black);
+
+
 };
 #endif // MAINWINDOW_H
