@@ -1,2 +1,33 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/new/img">
+        <file>chat.jpg</file>
+        <file>chat2.jpg</file>
+        <file>chat3.jpg</file>
+        <file>chat3.svg</file>
+        <file>menu.svg</file>
+        <file>addfiles.svg</file>
+        <file>person.svg</file>
+        <file>search.svg</file>
+        <file>smile.svg</file>
+        <file>enter.svg</file>
+        <file>save.svg</file>
+        <file>registration</file>
+        <file>../fonts/Roboto-Medium.ttf</file>
+        <file>../fonts/Roboto-MediumItalic.ttf</file>
+        <file>../emodji/sad.png</file>
+        <file>../emodji/sad2.png</file>
+        <file>../fonts/emoticons.ttf</file>
+        <file>../fonts/emoticons_outline.ttf</file>
+        <file>fon_information.jpg</file>
+        <file>back.svg</file>
+        <file>about.svg</file>
+        <file>chat_back.png</file>
+        <file>chat-fone2.jpg</file>
+        <file>copy_icon.png</file>
+        <file>delete_icon.png</file>
+        <file>mess_notRead.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>mess_read.png</file>
+    </qresource>
+</RCC>
