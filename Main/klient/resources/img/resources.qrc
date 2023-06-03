@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/new/img">
+        <file>chat.jpg</file>
+        <file>menu.svg</file>
+        <file>addfiles.svg</file>
+        <file>search.svg</file>
+        <file>smile.svg</file>
+        <file>enter.svg</file>
+        <file>save.svg</file>
+        <file>../fonts/Roboto-Medium.ttf</file>
+        <file>../fonts/Roboto-MediumItalic.ttf</file>
+        <file>../emodji/sad.png</file>
+        <file>../emodji/sad2.png</file>
+        <file>../fonts/emoticons.ttf</file>
+        <file>../fonts/emoticons_outline.ttf</file>
+        <file>fon_information.jpg</file>
+        <file>back.svg</file>
+        <file>copy_icon.png</file>
+        <file>delete_icon.png</file>
+        <file>mess_notRead.png</file>
+        <file>registration-fone.png</file>
+        <file>auth_logo.png</file>
+        <file>main-icon.png</file>
+        <file>chat_fone_wall.jpg</file>
+        <file>icon-exit.png</file>
+        <file>icon-info.png</file>
+        <file>icon-user.png</file>
+        <file>icon-settings(70-70).png</file>
+        <file>mail-open(40x40)@1x.png</file>
+        <file>mail(40x40)@1x.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>mess_read.png</file>
+    </qresource>
+</RCC>
