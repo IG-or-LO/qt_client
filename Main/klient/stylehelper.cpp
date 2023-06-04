@@ -27,7 +27,11 @@ QString stylehelper::getButtonsStyle()
             "}"
             "QPushButton::hover{"
             "background:#961f99;"
-           "}";
+           "}"
+           "QPushButton::checked{"
+           "background:#961f99;"
+          "}"
+            ;
 }
 
 QString stylehelper::getButtonMenuStyle()
@@ -118,7 +122,7 @@ QString stylehelper::getLineEditSearchStyle()
             "color:black;"
             "}"
             "QLineEdit::focus{"
-            "border:3px solid blue;"
+            "border:1px solid blue;"
             "background:white;"
            "}";
 
@@ -186,6 +190,23 @@ QString stylehelper::getScrollAreaStyle()
                                   "QScrollBar::add-page::vertical, QScrollBar::sub-page:vertical{"
                                   "background:none;"
                                   "}" ;
+}
+
+QString stylehelper::getFrameUserInfoStyle()
+{
+    return "QFrame{"
+           "border-bottom:2px solid"
+           " black;"
+           "background-color: grey; "
+           "}";
+}
+
+QString stylehelper::getFrameSearchInfoStyle()
+{
+    return "QFrame{"
+           "background-color: grey; "
+            "margin:0, 5 px,0 , 0;"
+           "}";
 }
 
 

@@ -19,6 +19,8 @@ public:
     static QString getLabelLogoStyle();
     static QString getButtonConnectionStyle();
     static QString getScrollAreaStyle();
+    static QString getFrameUserInfoStyle();
+    static QString getFrameSearchInfoStyle();
 };
 
 #endif // STYLEHELPER_H

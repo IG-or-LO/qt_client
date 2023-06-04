@@ -38,7 +38,7 @@ protected:
     void paintEvent(QPaintEvent *event);
 
 public slots:
-     void loadArchiveMessages(QString user_name,QPixmap user_pic);
+     void loadArchiveMessages();
 
 private slots:
      void slotReadyRead();
@@ -83,6 +83,10 @@ private slots:
      void on_pb_connection_clicked();
 
      void on_pb_reg_back_clicked();
+
+     void on_pbSearch_clicked();
+
+     void on_pbCloseSearch_clicked();
 
 private:
 

@@ -102,7 +102,7 @@ void MyListWidgetItem::mousePressEvent(QMouseEvent *event)
     {
         //already_clicked=true;
         //this->setStyleSheet("QWidget#main{background-color: rgba(193, 196, 187,1);");
-        emit onWidgetClicked(user_name,picture);
+        emit onWidgetClicked();
     }
 }
 

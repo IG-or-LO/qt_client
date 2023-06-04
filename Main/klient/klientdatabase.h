@@ -75,6 +75,7 @@ public:
     QStringList loadArchiveMessages(const QString &user_from,const QString &user_to);
     QVariantList getPersonalInfo(const QString &name_user_to_load);
     QVariantList getChatsList(const QString &login_user);
+    QStringList getSearchMessWithUser(const QString &login_user,const QString text);
     QByteArray getImageUser(const QString &name_user_to_load);
     QString getStatusMessage(const QString mess_id,const QString user);
     QString getLastDateChat(const QString &currentUser);

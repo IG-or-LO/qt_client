@@ -22,7 +22,7 @@ public:
     QPixmap getUserPixmap();
 
 signals:
-    void onWidgetClicked(QString user_name,QPixmap pictureOfUser);
+    void onWidgetClicked();
 
 private:
     void setInterfaceStyle();

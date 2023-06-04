@@ -32,7 +32,7 @@
    <string>CryptoChat</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="resources/img/resources.qrc">
     <normaloff>:/new/img/main-icon.png</normaloff>:/new/img/main-icon.png</iconset>
   </property>
   <property name="windowOpacity">
@@ -208,13 +208,13 @@
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset>
-                          <normaloff>:/new/img/menu.svg</normaloff>:/new/img/menu.svg</iconset>
+                         <iconset resource="resources/img/resources.qrc">
+                          <normaloff>:/new/img/menu---filled-(48x48)@1x.png</normaloff>:/new/img/menu---filled-(48x48)@1x.png</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
-                          <width>24</width>
-                          <height>24</height>
+                          <width>32</width>
+                          <height>32</height>
                          </size>
                         </property>
                         <property name="checkable">
@@ -229,6 +229,79 @@
                        <widget class="QLineEdit" name="leSearch"/>
                       </item>
                      </layout>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_TypeSearch">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_6">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <item row="0" column="0">
+                        <layout class="QHBoxLayout" name="horizontalLayout_13">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLabel" name="laTypeSearch">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="text">
+                            <string>Type_Search</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="pbCloseSearch">
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="resources/img/resources.qrc">
+                             <normaloff>:/new/img/multiply(48x48)@1x.png</normaloff>:/new/img/multiply(48x48)@1x.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>24</width>
+                             <height>24</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
                     </item>
                     <item>
                      <widget class="QListWidget" name="listWidget_Search">
@@ -249,6 +322,9 @@
                        </size>
                       </property>
                      </widget>
+                    </item>
+                    <item>
+                     <widget class="QListWidget" name="listWidget_SearchMess"/>
                     </item>
                    </layout>
                   </item>
@@ -364,14 +440,17 @@
                             <string/>
                            </property>
                            <property name="icon">
-                            <iconset>
-                             <normaloff>:/new/img/search.svg</normaloff>:/new/img/search.svg</iconset>
+                            <iconset resource="resources/img/resources.qrc">
+                             <normaloff>:/new/img/book-search(48x48)@1x.png</normaloff>:/new/img/book-search(48x48)@1x.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>24</width>
-                             <height>24</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
+                           </property>
+                           <property name="checkable">
+                            <bool>true</bool>
                            </property>
                           </widget>
                          </item>
@@ -381,13 +460,13 @@
                             <string/>
                            </property>
                            <property name="icon">
-                            <iconset>
-                             <normaloff>:/new/img/save.svg</normaloff>:/new/img/save.svg</iconset>
+                            <iconset resource="resources/img/resources.qrc">
+                             <normaloff>:/new/img/save-2(48x48)@1x.png</normaloff>:/new/img/save-2(48x48)@1x.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>24</width>
-                             <height>24</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
                            </property>
                           </widget>
@@ -401,13 +480,13 @@
                             <string/>
                            </property>
                            <property name="icon">
-                            <iconset>
-                             <normaloff>:/new/img/icon-user.png</normaloff>:/new/img/icon-user.png</iconset>
+                            <iconset resource="resources/img/resources.qrc">
+                             <normaloff>:/new/img/user-photograph(48x48)@1x.png</normaloff>:/new/img/user-photograph(48x48)@1x.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>24</width>
-                             <height>24</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
                            </property>
                           </widget>
@@ -437,7 +516,7 @@
                          <x>0</x>
                          <y>0</y>
                          <width>782</width>
-                         <height>847</height>
+                         <height>831</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_9">
@@ -508,21 +587,21 @@
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>70</width>
-                             <height>30</height>
+                             <width>16777215</width>
+                             <height>16777215</height>
                             </size>
                            </property>
                            <property name="text">
                             <string/>
                            </property>
                            <property name="icon">
-                            <iconset>
-                             <normaloff>:/new/img/addfiles.svg</normaloff>:/new/img/addfiles.svg</iconset>
+                            <iconset resource="resources/img/resources.qrc">
+                             <normaloff>:/new/img/attachment-2---filled-(48x48)@1x.png</normaloff>:/new/img/attachment-2---filled-(48x48)@1x.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>24</width>
-                             <height>24</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
                            </property>
                           </widget>
@@ -538,7 +617,7 @@
                            <property name="maximumSize">
                             <size>
                              <width>16777215</width>
-                             <height>30</height>
+                             <height>34</height>
                             </size>
                            </property>
                            <property name="toolTip">
@@ -558,13 +637,13 @@
                             <string>...</string>
                            </property>
                            <property name="icon">
-                            <iconset>
+                            <iconset resource="resources/img/resources.qrc">
                              <normaloff>:/new/img/emodji/sad.png</normaloff>:/new/img/emodji/sad.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>24</width>
-                             <height>24</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
                            </property>
                           </widget>
@@ -582,21 +661,21 @@
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>70</width>
-                             <height>30</height>
+                             <width>16777215</width>
+                             <height>16777215</height>
                             </size>
                            </property>
                            <property name="text">
                             <string/>
                            </property>
                            <property name="icon">
-                            <iconset>
-                             <normaloff>:/new/img/enter.svg</normaloff>:/new/img/enter.svg</iconset>
+                            <iconset resource="resources/img/resources.qrc">
+                             <normaloff>:/new/img/send-button-4(48x48)@1x.png</normaloff>:/new/img/send-button-4(48x48)@1x.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>24</width>
-                             <height>24</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
                            </property>
                            <property name="shortcut">
@@ -623,6 +702,21 @@
              <string>Страница</string>
             </attribute>
             <layout class="QGridLayout" name="gridLayout_29">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item row="0" column="0">
               <widget class="QLabel" name="la_logo">
                <property name="sizePolicy">
@@ -1037,7 +1131,7 @@
                          </sizepolicy>
                         </property>
                         <property name="text">
-                         <string>Login*</string>
+                         <string>Логин*</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1053,7 +1147,7 @@
                          </sizepolicy>
                         </property>
                         <property name="text">
-                         <string>Password*</string>
+                         <string>Пароль*</string>
                         </property>
                        </widget>
                       </item>
@@ -1066,7 +1160,7 @@
                          </sizepolicy>
                         </property>
                         <property name="text">
-                         <string>Mail*</string>
+                         <string>Почта*</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1082,7 +1176,7 @@
                          </sizepolicy>
                         </property>
                         <property name="text">
-                         <string>Phone number</string>
+                         <string>Номер телефона</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1252,8 +1346,8 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>:/new/img/back.svg</normaloff>:/new/img/back.svg</iconset>
+                <iconset resource="resources/img/resources.qrc">
+                 <normaloff>:/new/img/big-arrow-left(48x48)@1x.png</normaloff>:/new/img/big-arrow-left(48x48)@1x.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1678,8 +1772,8 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>:/new/img/back.svg</normaloff>:/new/img/back.svg</iconset>
+                <iconset resource="resources/img/resources.qrc">
+                 <normaloff>:/new/img/big-arrow-left(48x48)@1x.png</normaloff>:/new/img/big-arrow-left(48x48)@1x.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1974,8 +2068,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>:/new/img/back.svg</normaloff>:/new/img/back.svg</iconset>
+                  <iconset resource="resources/img/resources.qrc">
+                   <normaloff>:/new/img/big-arrow-left(48x48)@1x.png</normaloff>:/new/img/big-arrow-left(48x48)@1x.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -2010,7 +2104,7 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>Программа созданна в учебных целях Создатель: Лойко Игорь</string>
+                  <string>Программа создана в учебных целях Создатель: Лойко Игорь</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -2039,6 +2133,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources/img/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

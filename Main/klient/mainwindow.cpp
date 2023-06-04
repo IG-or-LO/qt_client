@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     encrypt=new Encryption();
     nextBlockSize=0;
     _currentUserLogin = "";
-    QRegularExpression regExp( "[a-zA-Z0-9]+@[a-zA-Z0-9\.]+" );
+    QRegularExpression regExp( "[a-zA-Z0-9]+@[a-zA-Z0-9.]+" );
     validator=new QRegularExpressionValidator(regExp,this);
     _already_connected=false;
     socket=new QTcpSocket(this);
@@ -39,12 +39,6 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     SetMenuToolButtonActions();
     SetInterfaceStyle();
     SetEmodjiButtonStyle();
-
-    //test
-    //connect()
-   // ui->scrollArea->hide();
-  //  connect(ui->listWidget,&QListWidget::clicked,this,&MainWindow::loadArchiveMessages)
-
 }
 
 MainWindow::~MainWindow()
@@ -52,18 +46,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::SetStartObjectStatus()
 {
     ui->tabWidget->setCurrentIndex(1);
     //first tab
-
     ui->le_login_enter->setFocus();
-
     ui->frame_reg->hide();
     ui->frame_connection->hide();
-
     //tab chat area
     messLayout=new QBoxLayout(QBoxLayout::TopToBottom);
     messLayout->addStretch(-1);
@@ -72,35 +61,30 @@ void MainWindow::SetStartObjectStatus()
     ui->frame_messEdit->hide();
     ui->frame_userInfo->hide();
     ui->listWidget_Search->hide();
-
+    ui->listWidget_SearchMess->hide();
+    ui->frame_TypeSearch->hide();
     //placeHolders
     ui->textEdit->setPlaceholderText("Написать сообщение");
     ui->leSearch->setPlaceholderText("Поиск");
-
     ui->le_reg_Mail->setValidator(validator);
 
-    //unused Blocks
-    //ui->pbEmodgi->hide();
     ui->scrollArea->installEventFilter(this);
 }
 
-
 void MainWindow::SetInterfaceStyle()
 {
-    //test mainwindow
-
-    //
-
     //tab chat
     ui->mess_frame->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->left_frame->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->right_frame->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->frame_Main->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->frame_messEdit->setStyleSheet(stylehelper::getFrameNoBorderStyle());
-    ui->frame_userInfo->setStyleSheet(stylehelper::getFrameNoBorderStyle());
+    //ui->frame_userInfo->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->frame_connection->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->frame_enter->setStyleSheet(stylehelper::getFrameNoBorderStyle());
     ui->frame_reg->setStyleSheet(stylehelper::getFrameNoBorderStyle());
+    ui->frame_userInfo->setStyleSheet(stylehelper::getFrameUserInfoStyle());
+    ui->frame_TypeSearch->setStyleSheet(stylehelper::getFrameSearchInfoStyle());
 
     //buttonsStyle
     ui->pbSend->setEnabled(true);
@@ -120,6 +104,7 @@ void MainWindow::SetInterfaceStyle()
     ui->pb_reg_enter->setStyleSheet(stylehelper::getButtonsRegAndEnterStyle());
     ui->pb_enter_enter->setStyleSheet(stylehelper::getButtonsRegAndEnterStyle());
     ui->pb_pi_image->setStyleSheet(stylehelper::getButtonsRegAndEnterStyle());
+    ui->pbCloseSearch->setStyleSheet(stylehelper::getButtonsStyle());
     //lablesStyle
     ui->la_logo->setStyleSheet(stylehelper::getLabelLogoStyle());
     ui->label_enter_or_reg->setStyleSheet(stylehelper::getLabelsStyle());
@@ -149,8 +134,6 @@ void MainWindow::SetInterfaceStyle()
 
     //scrollarea
     ui->scrollArea->setStyleSheet(stylehelper::getScrollAreaStyle());
-
-
 }
 
 void MainWindow::SetTabWidgetStyle()
@@ -167,7 +150,6 @@ void MainWindow::SetTabWidgetStyle()
       ui->tab_personalInfo->setStyleSheet(stylehelper::getTabsStyle());
       ui->tab_info->setStyleSheet(stylehelper::getTabsStyle());
       ui->tab_about->setStyleSheet(stylehelper::getTabsStyle());
-
 }
 
 void MainWindow::SetMenuToolButtonActions()
@@ -175,21 +157,21 @@ void MainWindow::SetMenuToolButtonActions()
     QAction *btn_Profileinfo=new QAction(this);
     QAction *btn_About=new QAction(this);
     QAction *btn_Exit=new QAction(this);
-    QFont font("Times",15,QFont::Bold);
+    QFont font("Roboto-Medium",13,QFont::Bold);
     btn_Profileinfo->setFont(font);
     btn_About->setFont(font);
     btn_Exit->setFont(font);
 
     QIcon icon_info(":/new/img/icon-user.png");
-    QIcon icon_about(":/new/img/icon-info.png");
-    QIcon icon_exit(":/new/img/icon-exit.png");
+    QIcon icon_about(":/new/img/round-chat-interrogation(48x48)@1x.png");
+    QIcon icon_exit(":/new/img/logout-2(48x48)@1x.png");
     btn_Profileinfo->setIcon(icon_info);
     btn_About->setIcon(icon_about);
     btn_Exit->setIcon(icon_exit);
 
-    btn_Profileinfo->setText("Profile");
-    btn_About->setText("About Programm");
-    btn_Exit->setText("Exit");
+    btn_Profileinfo->setText("Личный профиль");
+    btn_About->setText("О программе");
+    btn_Exit->setText("Выход из аккаунта");
 
     connect(btn_Profileinfo,&QAction::triggered,this,&MainWindow::toolButtonProfileInfo);
     connect(btn_About,&QAction::triggered,this,&MainWindow::toolButtonAbout);
@@ -209,7 +191,6 @@ void MainWindow::SetInterfaceStyleAfterConnect()
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-
     if(this->width()<550)
         ui->right_frame->hide();
     else
@@ -221,7 +202,6 @@ void MainWindow::paintEvent(QPaintEvent *event)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter,this);
     QWidget::paintEvent(event);
 }
-
 
 //END OF INTERFACE functions
 
@@ -261,10 +241,7 @@ void MainWindow::UpdateListOfMessages()
         MessegesWidget *messWidget= qobject_cast<MessegesWidget *>(messLayout->itemAt(i)->widget());
         messWidget->setWidgetStatus(true);
     }
-
 }
-
-
 
 void MainWindow::on_pbPersonInfo_clicked()
 {
@@ -419,7 +396,6 @@ void MainWindow::SendCommandToServer(quint8 command)
      out << (quint16)(block.size() - sizeof(quint16));
      socket->write(block);
 }
-
 
 void MainWindow::slotReadyRead()
 {
@@ -633,6 +609,14 @@ void MainWindow::slotSokDisconnected()
     ui->le_pass_enter->setText("");
     ui->frame_userInfo->hide();
     ui->frame_messEdit->hide();
+    ui->frame_TypeSearch->hide();
+    ui->listWidget->show();
+    ui->listWidget_Search->hide();
+    ui->listWidget_SearchMess->hide();
+    ui->leSearch->setText("");
+    ui->pbSearch->setEnabled(true);
+    ui->pbSearch->setChecked(false);
+
     ui->frame_connection->hide();
     ui->cb_autoLogin->setChecked(false);
     ui->tabWidget->setCurrentIndex(1);
@@ -656,8 +640,6 @@ void MainWindow::slotSokDisplayError(QAbstractSocket::SocketError socketError)
     }
 }
 
-
-//может быть добавить команду сендто сервер
 void MainWindow::toolButtonInfo()
 {
     ui->tabWidget->setCurrentIndex(4);
@@ -740,8 +722,7 @@ void MainWindow::on_pb_reg_enter_clicked()
     ui->frame_reg->show();
 }
 
-//убрал из коннекта
-void MainWindow::loadArchiveMessages(QString user_name, QPixmap user_pic)
+void MainWindow::loadArchiveMessages()
 {
    qDebug()<<"Колличество обьектов в meessLayouyt"<<messLayout->count();
 //очищаем список сообщений в messLayout
@@ -780,7 +761,6 @@ void MainWindow::loadArchiveMessages(QString user_name, QPixmap user_pic)
     SendCommandToServer(comUpdateStatusMessages);
 }
 
-//добавить label к 4 индексу для отображения фото
 void MainWindow::SetPersonalInfo(QVariantList nameSurnameAboutImage)
 {
     if(nameSurnameAboutImage.empty())
@@ -805,7 +785,6 @@ void MainWindow::SetPersonalInfo(QVariantList nameSurnameAboutImage)
         ui->la_pi_image->setPixmap(image_personal.scaled(100,100,Qt::KeepAspectRatio,Qt::SmoothTransformation));
     }
 }
-
 
 void MainWindow::addMessageGui(QString mess, QString user, QDateTime dateTime, QString status, QString title /* ="" */)
 {
@@ -835,26 +814,27 @@ void MainWindow::addUserGui(QPixmap pixIcon, const QString &title,
     if(mess!="")
     listItem->setMessShort(mess,date);
 
-
-    connect(listItem,SIGNAL(onWidgetClicked(QString,QPixmap)),this,SLOT(loadArchiveMessages(QString,QPixmap)));
-
     QListWidgetItem *item;
-    if(listSearch)//если используется поиск
+    if(listSearch && !ui->pbSearch->isChecked())//если используется глобальный поиск
     {
+        connect(listItem,SIGNAL(onWidgetClicked()),this,SLOT(loadArchiveMessages()));
         item=new QListWidgetItem(ui->listWidget_Search);
         ui->listWidget_Search->setItemWidget(item,listItem);
     }
-    else
+    else if(listSearch && ui->pbSearch->isChecked())//если используется локальный поиск
     {
+        item=new QListWidgetItem(ui->listWidget_SearchMess);
+        ui->listWidget_SearchMess->setItemWidget(item,listItem);
+    }
+    else//без поиска
+    {
+        connect(listItem,SIGNAL(onWidgetClicked()),this,SLOT(loadArchiveMessages()));
         item=new QListWidgetItem(ui->listWidget);
         ui->listWidget->setItemWidget(item,listItem);
     }
         item->setSizeHint(listItem->sizeHint());
 
 }
-
-
-
 
 void MainWindow::on_pb_saveChanges_clicked()
 {
@@ -957,14 +937,13 @@ QByteArray MainWindow::getQByteArrayFromPixmap(QPixmap pixmap)
 QByteArray MainWindow::getShablonImage()
 {
     QByteArray _shablonImageByteArray;
-    QPixmap image=QPixmap(":/new/img/person.svg");
+    QPixmap image=QPixmap(":/new/img/icon-user.png");
     QBuffer inBuffer( &_shablonImageByteArray );
     inBuffer.open(QIODevice::WriteOnly);
     image.save(&inBuffer, "PNG");
 
     return _shablonImageByteArray;
 }
-
 
 void MainWindow::on_pb_pi_image_clicked()
 {
@@ -992,21 +971,34 @@ void MainWindow::on_pb_pi_image_clicked()
 void MainWindow::on_leSearch_textChanged(const QString &arg1)
 {
     ui->listWidget_Search->clear();
+    ui->listWidget_SearchMess->clear();
 
     if(ui->leSearch->text()=="")
     {
-        ui->listWidget->show();
-        ui->listWidget_Search->hide();
+        return;
     }
-    else
+    else if(!ui->pbSearch->isChecked())
     {
         if(ui->listWidget_Search->isHidden())
         {
             ui->listWidget->hide();
+            ui->listWidget_SearchMess->hide();
             ui->listWidget_Search->show();
+            ui->frame_TypeSearch->show();
+            ui->laTypeSearch->setText("Глобальный поиск");
         }
         SendCommandToServer(comSearchUsers);
         ui->leSearch->setEnabled(false);
+    }
+    else if(ui->pbSearch->isChecked())
+    {
+        QStringList messData;
+        messData=dataBase->getSearchMessWithUser(ui->laWithUserChat->text(),arg1);
+        for (int  i= 0; i < messData.size(); i=i+2) {
+        addUserGui(getPixmapFromQByteArray(dataBase->getImageUser(ui->laWithUserChat->text()))
+                   ,ui->laWithUserChat->text(),QDateTime::fromString(messData[i+1]),true,messData[i]);
+        }
+
     }
 }
 
@@ -1025,4 +1017,34 @@ void MainWindow::on_pb_reg_back_clicked()
         ui->frame_connection->hide();
     ui->frame_reg->hide();
     ui->frame_enter->show();
+}
+
+void MainWindow::on_pbSearch_clicked()
+{
+    //обработка открытия/закрытия листвиджетов
+    ui->listWidget->hide();
+    ui->listWidget_Search->hide();
+    ui->frame_TypeSearch->show();
+    ui->laTypeSearch->setText("Поиск сообщений в чате");
+    ui->listWidget_SearchMess->show();
+    ui->pbSearch->setEnabled(false);
+    ui->leSearch->setFocus();
+}
+
+void MainWindow::on_pbCloseSearch_clicked()
+{
+    ui->listWidget_Search->hide();
+    ui->listWidget_SearchMess->hide();
+    ui->frame_TypeSearch->hide();
+    ui->laTypeSearch->setText("");
+    ui->leSearch->setText("");
+    ui->leSearch->clearFocus();
+    //обнуляем кнопку локального поиска
+    if(ui->pbSearch->isChecked())
+    {
+        ui->pbSearch->setChecked(false);
+        ui->pbSearch->setEnabled(true);
+    }
+    ui->listWidget->show();
+
 }

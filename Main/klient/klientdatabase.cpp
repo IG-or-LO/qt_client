@@ -388,7 +388,6 @@ QStringList klientDataBase::loadArchiveMessages(const QString &user_from, const 
 QVariantList klientDataBase::getPersonalInfo(const QString &name_user_to_load)
 {
     QVariantList nameSurnameAboutImage;
-
     QSqlQuery query;
     QString str = QString("SELECT " ACC_NAME ", " ACC_SURNAME ", " ACC_DESCRIPTION ", " ACC_IMAGE " "
                           " FROM " ACC_TABLE " WHERE " ACC_NICKNAME " = '"+name_user_to_load+"'  ");
@@ -449,6 +448,35 @@ QVariantList klientDataBase::getChatsList(const QString &login_user)
         qDebug()<<"ERROR get chatsLists:"<<query.lastError();
 
     return loginMessDateImageUnRead;
+}
+
+QStringList klientDataBase::getSearchMessWithUser(const QString &login_user, const QString text)
+{
+    QStringList messData;
+    QString str="%"+text+"%";
+    int _id=getUserId(login_user);
+
+    QSqlQuery query;
+    query.prepare(QString("SELECT " MESSAGE_CONTENT ", " MESSAGE_DATA " "
+                          "FROM " MESSAGE_TABLE " "
+                          "WHERE " MESSAGE_FROMID " =:ID "
+                          "AND " MESSAGE_CONTENT " like :SEARCH "));
+    query.bindValue(":ID",_id);
+    query.bindValue(":SEARCH",str);
+    query.exec();
+
+    if(query.isActive()){
+        qDebug()<<"search is active now";
+        while(query.next())
+        {
+            messData.append(query.value(0).toString());
+            messData.append(query.value(1).toString());
+        }
+    }
+    else
+        qDebug()<<"ERROR get SEARCHMessWhithUser:"<<query.lastError();
+
+    return messData;
 }
 
 QByteArray klientDataBase::getImageUser(const QString &name_user_to_load)
